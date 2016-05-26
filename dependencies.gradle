@@ -1,0 +1,25 @@
+ext.versions = [
+        code                         : 1,
+        name                         : '1.0',
+
+        minSdk                       : 16,
+        targetSdk                    : 23,
+        compileSdk                   : 23,
+        buildTools                   : '23.0.3',
+
+        androidGradlePlugin          : '2.1.0',
+        aptGradlePlugin              : '1.8',
+
+
+        dagger                       : '2.4',
+]
+
+ext.gradlePlugins = [
+        android          : "com.android.tools.build:gradle:$versions.androidGradlePlugin",
+        apt              : "com.neenbedankt.gradle.plugins:android-apt:$versions.aptGradlePlugin",
+]
+
+ext.libraries = [
+        dagger                  : "com.google.dagger:dagger:$versions.dagger",
+        daggerCompiler          : "com.google.dagger:dagger-compiler:$versions.dagger",
+]
