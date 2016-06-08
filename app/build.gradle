@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.neenbedankt.android-apt'
 
 android {
@@ -13,6 +14,12 @@ android {
         versionCode versions.code
         versionName versions.name
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -20,24 +27,52 @@ android {
         }
     }
 
-    compileOptions.incremental = false
+    sourceSets {
+        test.java.srcDir 'src/unitTests/java'
+    }
 }
 
 dependencies {
 
+    compile libraries.rxJava
+
     compile libraries.dagger
     apt libraries.daggerCompiler
+
+    apt libraries.autoValue
+    provided libraries.autoValue
+
+    compile libraries.okHttp
+    compile libraries.retrofit
+    compile libraries.retrofitJacksonConverter
+    compile libraries.retrofitRxJavaAdapter
+    compile libraries.jacksonDataBind
+
+    compile libraries.butterKnife
+    apt libraries.butterKnifeCompiler
 
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
 
+    //Testing Libraries
 
-    //Dependency for Google Sign-In
-    //compile 'com.google.android.gms:play-services-auth:9.0.0'
-    //compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile libraries.junit
+    testCompile libraries.robolectric
+    testCompile libraries.assertJ
+    testCompile libraries.equalsVerifier
+    testCompile libraries.okHttpMockWebServer
+    testCompile libraries.mockitoCore
 
-
+    androidTestCompile 'com.android.support:support-annotations:23.4.0'
+    androidTestCompile libraries.supportTestRunner
+    androidTestCompile libraries.supportTestRules
+    androidTestCompile libraries.espressoCore
+    androidTestCompile(libraries.espressoContrib) {
+        // Causes IncompatibleClassChangeError. As always…
+        exclude module: 'support-annotations'
+        exclude module: 'recyclerview-v7'
+        exclude module: 'support-v4'
+    }
+    androidTestCompile libraries.okHttpMockWebServer
 }
-
-//apply plugin: 'com.google.gms.google-services'
 

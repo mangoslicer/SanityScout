@@ -9,17 +9,62 @@ ext.versions = [
 
         androidGradlePlugin          : '2.1.0',
         aptGradlePlugin              : '1.8',
+        retrolambdaGradlePlugin      : '3.2.5',
 
 
+        rxJava                       : '1.1.5',
         dagger                       : '2.4',
+        jackson                      : '2.6.3',
+        autoValue                    : '1.2-rc1',
+        okHttp                       : '3.2.0',
+        retrofit                     : '2.0.0-beta4',
+
+        butterKnife                  : '8.0.1',
+
+        junit                        : '4.12',
+        robolectric                  : '3.0',
+        assertJ                      : '2.4.0',
+        equalsVerifier               : '1.7.5',
+        mockito                      : '1.10.19',
+        supportTestRunner            : '0.5',
+        espresso                     : '2.2.1',
+
 ]
 
 ext.gradlePlugins = [
         android          : "com.android.tools.build:gradle:$versions.androidGradlePlugin",
         apt              : "com.neenbedankt.gradle.plugins:android-apt:$versions.aptGradlePlugin",
+        retrolambda      : "me.tatarka:gradle-retrolambda:$versions.retrolambdaGradlePlugin",
 ]
 
 ext.libraries = [
+        rxJava                  : "io.reactivex:rxjava:$versions.rxJava",
+
         dagger                  : "com.google.dagger:dagger:$versions.dagger",
         daggerCompiler          : "com.google.dagger:dagger-compiler:$versions.dagger",
+
+        //Network Dependencies
+        okHttp                  : "com.squareup.okhttp3:okhttp:$versions.okHttp",
+        okHttpLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$versions.okHttp",
+        retrofit                : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+        retrofitJacksonConverter: "com.squareup.retrofit2:converter-jackson:$versions.retrofit",
+        retrofitRxJavaAdapter   : "com.squareup.retrofit2:adapter-rxjava:$versions.retrofit",
+        jacksonDataBind         : "com.fasterxml.jackson.core:jackson-databind:$versions.jackson",
+
+        autoValue               : "com.google.auto.value:auto-value:$versions.autoValue",
+
+        butterKnife             : "com.jakewharton:butterknife:$versions.butterKnife",
+        butterKnifeCompiler     : "com.jakewharton:butterknife-compiler:$versions.butterKnife",
+
+        //Test Dependencies
+        junit                   : "junit:junit:$versions.junit",
+        robolectric             : "org.robolectric:robolectric:$versions.robolectric",
+        assertJ                 : "org.assertj:assertj-core:$versions.assertJ",
+        equalsVerifier          : "nl.jqno.equalsverifier:equalsverifier:$versions.equalsVerifier",
+        okHttpMockWebServer     : "com.squareup.okhttp3:mockwebserver:$versions.okHttp",
+        mockitoCore             : "org.mockito:mockito-core:$versions.mockito",
+        supportTestRunner       : "com.android.support.test:runner:$versions.supportTestRunner",
+        supportTestRules        : "com.android.support.test:rules:$versions.supportTestRunner",
+        espressoCore            : "com.android.support.test.espresso:espresso-core:$versions.espresso",
+        espressoContrib         : "com.android.support.test.espresso:espresso-contrib:$versions.espresso",
 ]
